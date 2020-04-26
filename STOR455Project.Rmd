@@ -1,0 +1,49 @@
+---
+title: "STOR 455 Project"
+output: html_document
+---
+```{r}
+diamonds = read.delim("us.carata.txt")
+summary(diamonds)
+```
+
+```{r}
+plot(diamonds$carat, diamonds$price, main = "Price vs Carat", xlab = "Carat", ylab = "Price")
+plot(diamonds$color, diamonds$price, main = "Price vs Color", xlab = "Color", ylab = "Price")
+plot(diamonds$clarity, diamonds$price, main = "Price vs Clarity", xlab = "Clarity", ylab = "Price")
+plot(diamonds$certification, diamonds$price, main = "Price vs Certification", xlab = "Certificaction", ylab = "Price")
+
+```
+
+```{r}
+Y <- log10(diamonds$price)
+X1 <- diamonds$carat
+X2 <- diamonds$color
+X3 <- diamonds$clarity
+X4 <- diamonds$certification
+X2 <- relevel(X2, ref = "I")
+
+lm_diamonds <- lm(Y ~ X1+X2+X3+X4)
+summary(lm_diamonds)
+plot(lm_diamonds)
+
+
+```
+
+
+
+
+
+
+
+```{r}
+mean(diamonds$carat)
+carat_center <- (diamonds$carat - mean(diamonds$carat))
+carat_squared <- (carat_center)^2
+lm2_diamonds <- lm(Y~carat_center + carat_squared + X2 + X3 + X4)
+summary(lm2_diamonds)
+plot(lm2_diamonds)
+
+
+```
+
