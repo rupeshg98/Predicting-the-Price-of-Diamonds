@@ -1,0 +1,1 @@
+This is a project for my data analysis class. Hypothetically, I am a consultant for a firm that sells diamonds and my job is to create a model that predicts the price of a diamond based on its characteristics. I used R to create different plots from a given database and then created a final linear model for predictions. 
